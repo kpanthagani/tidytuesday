@@ -32,9 +32,6 @@ top30_toplot <- sort[sort$count >= minvalue,]
 # get rid of NA values
 top30_toplot <- na.omit(top30_toplot)
 
-# define breaks for color gradient
-#my_breaks = c(0, 0.5, 2)
-
 # plot
 g <- ggplot(top30_toplot, aes(x= reorder(language, -ratio, FUN = median), y = ratio, color = top30_toplot$ratio)) + geom_boxplot(show.legend= FALSE, alpha = 0.5) + geom_point(show.legend = FALSE) + scale_color_gradient2(high = "white", mid = "red", low = "red", midpoint = 0.0000001, trans = "pseudo_log") + ylim(0,5)
 
