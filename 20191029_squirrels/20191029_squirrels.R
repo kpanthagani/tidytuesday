@@ -30,7 +30,7 @@ bottom <- min(nyc_squirrels$lat) - 0.005
 map <- get_stamenmap(bbox = c(left = left, right = right, top = top, bottom = bottom), zoom = 13, maptype = "toner")
 
 # plot lat/lon data on the map
-g <- ggmap(map, base_layer = (ggplot(data = nyc_squirrels, aes(x = long, y = lat))))  + coord_cartesian() + coord_cartesian() + geom_hex(aes(colour = ..count..), bins = 50) + scale_fill_viridis_c() + scale_color_viridis_c() + themez + labs(fill=str_wrap('Number of Squirrels', width= 10)) + guides(color = FALSE)
+g <- ggmap(map, base_layer = (ggplot(data = nyc_squirrels, aes(x = long, y = lat)))) + coord_cartesian() + geom_hex(aes(colour = ..count..), bins = 50) + scale_fill_viridis_c() + scale_color_viridis_c() + themez + labs(fill=str_wrap('Number of Squirrels', width= 10)) + guides(color = FALSE)
 
 # create layer with just hexagons to be converted to 3d
 g_hex <- ggmap(map, base_layer = (ggplot(data = nyc_squirrels, aes(x = long, y = lat))), darken = c(1, "white"))  + coord_cartesian()  + geom_hex(aes(colour = ..count..), bins = 50)  + scale_fill_viridis_c() + scale_color_viridis_c() + themez + labs(fill=str_wrap('Number of Squirrels', width= 10)) + guides(color = FALSE)
